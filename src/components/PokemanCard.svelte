@@ -14,7 +14,6 @@
 
 <style>
 	.card {
-		border: 3px solid #fee267;
-		transition: all 0.1s ease-in-out;
+		background: white;
 	}
 </style>

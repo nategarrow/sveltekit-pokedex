@@ -25,3 +25,6 @@
 />
 
 <Pokedex {searchTerm} />
+
+<style>
+</style>
