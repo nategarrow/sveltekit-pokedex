@@ -11,6 +11,7 @@
 	div#pokedex {
 		width: 750px;
 		margin: 50px auto 0 auto;
+		transform: scale(1.3);
 	}
 
 	div#left {
@@ -263,12 +264,15 @@
 
 	div#picture {
 		height: 175px;
-		width: 254px;
+		width: 224px;
 		margin-top: 20px;
 		margin-bottom: 9px;
 		background-color: #fff;
 		border: 3px solid #494949;
 		clear: both;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
 		border-radius: 15px;
 		-webkit-border-radius: 15px;
@@ -355,19 +359,13 @@
 		left: 30px;
 
 		border-radius: 100px;
-		-webkit-border-radius: 100px;
-		-moz-border-radius: 100px;
-		-o-border-radius: 100px;
-
 		background: linear-gradient(top, #307bfb 0%, #0530e5 80%);
-		background: -webkit-linear-gradient(top, #307bfb 0%, #0530e5 80%);
-		background: -moz-linear-gradient(top, #307bfb 0%, #0530e5 80%);
-		background: -o-linear-gradient(top, #307bfb 0%, #0530e5 80%);
-
 		box-shadow: -3px 2px #001c91;
-		-webkit-box-shadow: -3px 2px #001c91;
-		-moz-box-shadow: -3px 2px #001c91;
-		-o-box-shadow: -3px 2px #001c91;
+		transition: all 0.05s ease-in-out;
+	}
+
+	#bigbluebuttonLink:active > div {
+		box-shadow: -1px 0px #000c3c;
 	}
 
 	div#barbutton1 {
@@ -427,6 +425,14 @@
 		left: 230px;
 	}
 
+	div#topcross,
+	div#leftcross,
+	div#midcross,
+	div#rightcross,
+	div#botcross {
+		transition: all 0.05s ease-in-out;
+	}
+
 	div#topcross {
 		width: 30px;
 		height: 30px;
@@ -452,7 +458,7 @@
 		-o-border-top-right-radius: 5px;
 	}
 
-	div#leftcross {
+	button#leftcross {
 		width: 30px;
 		height: 30px;
 		background-color: #222;
@@ -493,7 +499,7 @@
 		-o-box-shadow: -3px 2px #010101;
 	}
 
-	div#rightcross {
+	button#rightcross {
 		width: 30px;
 		height: 30px;
 		background-color: #222;
@@ -503,19 +509,8 @@
 		right: 0;
 
 		box-shadow: -3px 2px #010101;
-		-webkit-box-shadow: -3px 2px #010101;
-		-moz-box-shadow: -3px 2px #010101;
-		-o-box-shadow: -3px 2px #010101;
-
 		border-top-right-radius: 5px;
-		-webkit-border-top-right-radius: 5px;
-		-moz-border-top-right-radius: 5px;
-		-o-border-top-right-radius: 5px;
-
 		border-bottom-right-radius: 5px;
-		-webkit-border-bottom-right-radius: 5px;
-		-moz-border-bottom-right-radius: 5px;
-		-o-border-bottom-right-radius: 5px;
 	}
 
 	div#botcross {
@@ -541,6 +536,17 @@
 		-webkit-border-bottom-right-radius: 5px;
 		-moz-border-bottom-right-radius: 5px;
 		-o-border-bottom-right-radius: 5px;
+	}
+
+	button#rightcross:hover,
+	button#leftcross:hover {
+		cursor: pointer;
+	}
+	div#topcross:active,
+	div#botcross:active,
+	button#rightcross:active,
+	button#leftcross:active {
+		background-color: #111;
 	}
 
 	div#upT {

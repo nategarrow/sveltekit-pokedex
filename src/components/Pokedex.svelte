@@ -6,6 +6,7 @@
 	export let searchTerm;
 	let Carousel;
 	let carousel;
+	let thisPokemon = $pokemon[0];
 
 	onMount(async () => {
 		const module = await import('svelte-carousel');
@@ -13,6 +14,7 @@
 	});
 
 	$: {
+		thisPokemon = $pokemon[0];
 		if (searchTerm) {
 			const filteredPokemon = $pokemon.find((pokeman) =>
 				pokeman.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -53,6 +55,10 @@
 					bind:this={carousel}
 					let:showPrevPage
 					let:showNextPage
+					infinite={false}
+					on:pageChange={(e) => {
+						thisPokemon = $pokemon[e.detail];
+					}}
 					dots={false}
 				>
 					{#each $pokemon as pokeman}
@@ -68,19 +74,23 @@
 				<div class="sp" />
 			</div>
 		</div>
-		<div id="bigbluebutton" />
+		{#if thisPokemon}
+			<a id="bigbluebuttonLink" href={`/pokemon/${thisPokemon.id}`}><div id="bigbluebutton" /></a>
+		{:else}
+			<div id="bigbluebutton" />
+		{/if}
 		<div id="barbutton1" />
 		<div id="barbutton2" />
 		<div id="cross">
-			<div id="leftcross">
+			<button id="leftcross" on:click={() => carousel.goToPrev()}>
 				<div id="leftT" />
-			</div>
+			</button>
 			<div id="topcross">
 				<div id="upT" />
 			</div>
-			<div id="rightcross">
+			<button id="rightcross" on:click={() => carousel.goToNext()}>
 				<div id="rightT" />
-			</div>
+			</button>
 			<div id="midcross">
 				<div id="midCircle" />
 			</div>
@@ -91,7 +101,17 @@
 	</div>
 	<div id="right">
 		<div id="stats">
-			<strong>Name:</strong>
+			<div id="top-stats">
+				{#if thisPokemon}
+					<strong class="text-lg">ID: {thisPokemon.id}</strong><br />
+					<strong class="text-lg">Name: {thisPokemon.name}</strong><br />
+				{:else}
+					<strong class="text-2xl text-gray-600">LOADING...</strong>
+				{/if}
+			</div>
+			<div id="btm-stats">
+				<p class="text-xs">(Use the controls below the image to cycle Pokémon)</p>
+			</div>
 		</div>
 		<div id="blueButtons1">
 			<div class="blueButton" />

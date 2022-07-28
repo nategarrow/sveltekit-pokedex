@@ -6,3 +6,7 @@ body {
 	min-height: 100vh;
 	background-color: grey;
 }
+
+p {
+	margin-bottom: 1rem;
+}
